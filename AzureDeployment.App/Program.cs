@@ -1,4 +1,11 @@
+using Azure.Identity;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//Add azure key vault configuration
+builder.Configuration.AddAzureKeyVault(
+    new Uri("https://azure-app-demo-key-vault.vault.azure.net/"),
+    new DefaultAzureCredential());
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
